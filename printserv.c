@@ -16,9 +16,9 @@
 
 #define min(X, Y) (((X) < (Y)) ? (X) : (Y))
 
-#define QUEUE_SHMSZ       25
-#define MAX_PRINTS        30
-#define MIN_PRINTS         1
+#define QUEUE_SHMSZ   25
+#define MAX_PRINTS  30
+#define MIN_PRINTS   1
 #define MAX_PRINT_SIZE  1000
 #define MIN_PRINT_SIZE   100
 #define QUEUE_SHM_START 521809
@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
 
 	printf("time now is: %ld\n", currMilli());
 
-	job_input = strtod(argv[1], NULL);      // how many devices are on network
+	job_input = strtod(argv[1], NULL);   // how many devices are on network
 	consume_input = strtod(argv[2], NULL);  // how many printers are on network
 
 	producers = (int) job_input;
@@ -197,7 +197,7 @@ int main(int argc, char *argv[])
 			{
 				printf("\n ERROR creating thread 1");
 				exit(1);
-			}
+   }
 		}
 		else{
 			if(pthread_create(&tid1[i], NULL, consumer_create, NULL))
@@ -205,7 +205,7 @@ int main(int argc, char *argv[])
 				printf("\n ERROR creating thread 1");
 				exit(1);
 			}
-		}
+    }
 	}
 
 	printf("done");
@@ -375,8 +375,6 @@ void * consumer_create(void * a){
 				mysem_post(&shm->mutex);
 				usleep(size_temp * 100);
 				mysem_post(&shm->empty);
-
-
 			}
 		}
 	}
